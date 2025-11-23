@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import EducationForm from "./EducationForm";
 
-export default function Modal() {
-  let [isOpen, setIsOpen] = useState(false);
-
+export default function Modal({ open, onClose }) {
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Open dialog</button>
       <Dialog
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
+        open={open}
+        onClose={onClose}
         className="relative z-50"
         style={{
           position: "absolute",
@@ -21,12 +19,14 @@ export default function Modal() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: "white",
         }}
       >
         <div>
           <DialogPanel className="max-w-lg space-y-4 border bg-black p-12">
             <DialogTitle>Something</DialogTitle>
-            <button onClick={() => setIsOpen(false)}>Cancel</button>
+            <EducationForm></EducationForm>
+            <button onClick={() => onClose(true)}>Cancel</button>
           </DialogPanel>
         </div>
       </Dialog>

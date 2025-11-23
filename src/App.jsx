@@ -4,7 +4,15 @@ import EducationSection from "./components/EducationSection";
 import Modal from "./components/Modal";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [education, setEducation] = useState([
+    {
+      schoolName: "Some school",
+      subject: "Informatics",
+      years: "2000-2003",
+    },
+  ]);
+  const [isModalOpen, setOpen] = useState(false);
+
   const data = {
     general: {
       fullName: "",
@@ -34,15 +42,20 @@ function App() {
     ],
   };
 
-  function onAdd() {}
+  function handleAddEducation() {
+    setOpen(true);
+  }
 
   return (
     <>
       <div>
-        <EducationSection entries={data}></EducationSection>
-      </div>
-      <div>
-        <Modal></Modal>
+        <EducationSection
+          entries={education}
+          onAdd={handleAddEducation}
+        ></EducationSection>
+        {isModalOpen && (
+          <Modal open={isModalOpen} onClose={() => setOpen(false)}></Modal>
+        )}
       </div>
     </>
   );

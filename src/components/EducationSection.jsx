@@ -1,5 +1,5 @@
 export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
-  const eduArr = entries.education;
+  const eduArr = entries;
   console.log(eduArr.length);
 
   if (eduArr.length === 0)
@@ -36,7 +36,9 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
         ))}
       </div>
       <div>
-        <button>+ Add new education</button>
+        <button type="button" onClick={onAdd}>
+          + Add new education
+        </button>
       </div>
     </div>
   );
