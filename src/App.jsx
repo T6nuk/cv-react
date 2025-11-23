@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import EducationSection from "./components/EducationSection";
+import Modal from "./components/Modal";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,9 +14,14 @@ function App() {
     },
     education: [
       {
-        schoolName: "",
-        subject: "",
-        years: "",
+        schoolName: "Some school",
+        subject: "Informatics",
+        years: "2000-2003",
+      },
+      {
+        schoolName: "test4",
+        subject: "test5",
+        years: "test6",
       },
     ],
     experience: [
@@ -27,9 +34,16 @@ function App() {
     ],
   };
 
+  function onAdd() {}
+
   return (
     <>
-      <div>ge</div>
+      <div>
+        <EducationSection entries={data}></EducationSection>
+      </div>
+      <div>
+        <Modal></Modal>
+      </div>
     </>
   );
 }
