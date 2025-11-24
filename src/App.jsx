@@ -6,11 +6,13 @@ import Modal from "./components/Modal";
 
 function App() {
   const [education, setEducation] = useState([
-    {
-      schoolName: "Some school",
-      subject: "Informatics",
-      years: "2000-2003",
-    },
+    // {
+    //   country: "Estonia",
+    //   educationLevel: "Bachelors",
+    //   schoolName: "Some school",
+    //   subject: "Informatics",
+    //   years: "2000-2003",
+    // },
   ]);
   const [general, setGeneral] = useState({
     fullName: "",
@@ -32,6 +34,27 @@ function App() {
     setOpen(true);
   }
 
+  function generateId() {
+    return crypto.randomUUID();
+  }
+
+  function handleSubmitEducation(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const id = generateId();
+    const formJson = Object.fromEntries(formData.entries());
+    let newEducation = {
+      ...formJson,
+      id,
+    };
+    setEducation((prev) => [...prev, newEducation]);
+
+    console.log(newEducation);
+    console.log(education);
+  }
+
   return (
     <>
       <div>
@@ -41,7 +64,7 @@ function App() {
         ></EducationSection>
         {isModalOpen && (
           <Modal open={isModalOpen} onClose={() => setOpen(false)}>
-            <EducationForm></EducationForm>
+            <EducationForm onSubmit={handleSubmitEducation}></EducationForm>
           </Modal>
         )}
       </div>

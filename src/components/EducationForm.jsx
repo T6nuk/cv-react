@@ -1,22 +1,24 @@
-export default function EducationForm() {
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
-  }
+export default function EducationForm({ onSubmit }) {
   return (
     <div>
-      <form method="post" onSubmit={handleSubmit}>
+      <form method="post" onSubmit={onSubmit}>
         <div>
           <div>
             <div>
               <label>Level of education</label>
               <div>
-                <input type="text" name="lvlEducation" />
+                <select name="educationLevel">
+                  <option value="middleSchool">Middle school</option>
+                  <option value="highSchool">Highschool</option>
+                  <option value="bachelors">Bacherlors degree</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label>Country of education</label>
+              <div>
+                <input type="text" name="country" />
               </div>
             </div>
           </div>

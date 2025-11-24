@@ -9,7 +9,9 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
           <header>Education</header>
         </div>
         <div>
-          <button type="button">+ add new education</button>
+          <button type="button" onClick={onAdd}>
+            + add new education
+          </button>
         </div>
       </div>
     );
@@ -23,7 +25,9 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
           <article key={entry.id}>
             <div>
               <div>
-                <strong>{entry.schoolName}</strong>
+                <strong>
+                  {entry.schoolName} ({entry.country}, {entry.educationLevel})
+                </strong>
                 <button>Change</button>
                 <button>Delete</button>
               </div>
