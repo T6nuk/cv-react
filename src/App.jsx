@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import EducationSection from "./components/EducationSection";
+import EducationForm from "./components/EducationForm";
 import Modal from "./components/Modal";
 
 function App() {
@@ -11,36 +12,21 @@ function App() {
       years: "2000-2003",
     },
   ]);
-  const [isModalOpen, setOpen] = useState(false);
-
-  const data = {
-    general: {
-      fullName: "",
-      email: "",
-      phone: "",
-      birthDate: "",
+  const [general, setGeneral] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    birthDate: "",
+  });
+  const [experience, setExperince] = useState([
+    {
+      jobTitle: "",
+      company: "",
+      years: "",
+      description: "",
     },
-    education: [
-      {
-        schoolName: "Some school",
-        subject: "Informatics",
-        years: "2000-2003",
-      },
-      {
-        schoolName: "test4",
-        subject: "test5",
-        years: "test6",
-      },
-    ],
-    experience: [
-      {
-        jobTitle: "",
-        company: "",
-        years: "",
-        description: "",
-      },
-    ],
-  };
+  ]);
+  const [isModalOpen, setOpen] = useState(false);
 
   function handleAddEducation() {
     setOpen(true);
@@ -54,7 +40,9 @@ function App() {
           onAdd={handleAddEducation}
         ></EducationSection>
         {isModalOpen && (
-          <Modal open={isModalOpen} onClose={() => setOpen(false)}></Modal>
+          <Modal open={isModalOpen} onClose={() => setOpen(false)}>
+            <EducationForm></EducationForm>
+          </Modal>
         )}
       </div>
     </>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import EducationForm from "./EducationForm";
 
-export default function Modal({ open, onClose }) {
+export default function Modal({ open, onClose, children }) {
   return (
     <>
       <Dialog
@@ -25,7 +25,7 @@ export default function Modal({ open, onClose }) {
         <div>
           <DialogPanel className="max-w-lg space-y-4 border bg-black p-12">
             <DialogTitle>Something</DialogTitle>
-            <EducationForm></EducationForm>
+            {children}
             <button onClick={() => onClose(true)}>Cancel</button>
           </DialogPanel>
         </div>
