@@ -5,15 +5,7 @@ import EducationForm from "./components/EducationForm";
 import Modal from "./components/Modal";
 
 function App() {
-  const [education, setEducation] = useState([
-    // {
-    //   country: "Estonia",
-    //   educationLevel: "Bachelors",
-    //   schoolName: "Some school",
-    //   subject: "Informatics",
-    //   years: "2000-2003",
-    // },
-  ]);
+  const [education, setEducation] = useState([]);
   const [general, setGeneral] = useState({
     fullName: "",
     email: "",
@@ -29,16 +21,44 @@ function App() {
     },
   ]);
   const [isModalOpen, setOpen] = useState(false);
+  const [modalMode, setMode] = useState("");
+  const [selectedId, setId] = useState();
+
+  const emptyEducation = {
+    country: "",
+    educationLevel: "",
+    schoolName: "",
+    subject: "",
+    years: "",
+  };
 
   function handleAddEducation() {
     setOpen(true);
+    setMode("add");
+    setId(null);
+  }
+  function handleEditEducation(id) {
+    setOpen(true);
+    setMode("edit");
+    setId(id);
   }
 
   function generateId() {
     return crypto.randomUUID();
   }
+  let initialValues = "";
+
+  if (modalMode === "edit") {
+    initialValues = education.find((e) => e.id === selectedId);
+  } else {
+    initialValues = emptyEducation;
+  }
+
+  console.log(initialValues);
 
   function handleSubmitEducation(e) {
+    console.log(modalMode);
+
     e.preventDefault();
 
     const form = e.target;
@@ -49,10 +69,12 @@ function App() {
       ...formJson,
       id,
     };
-    setEducation((prev) => [...prev, newEducation]);
 
-    console.log(newEducation);
-    console.log(education);
+    if (modalMode === "add") {
+      setEducation((prev) => [...prev, newEducation]);
+    }
+
+    console.log("selected" + selectedId);
   }
 
   return (
@@ -61,10 +83,14 @@ function App() {
         <EducationSection
           entries={education}
           onAdd={handleAddEducation}
+          onEdit={handleEditEducation}
         ></EducationSection>
         {isModalOpen && (
           <Modal open={isModalOpen} onClose={() => setOpen(false)}>
-            <EducationForm onSubmit={handleSubmitEducation}></EducationForm>
+            <EducationForm
+              onSubmit={handleSubmitEducation}
+              initialValues={initialValues}
+            ></EducationForm>
           </Modal>
         )}
       </div>

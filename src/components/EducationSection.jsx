@@ -28,7 +28,9 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
                 <strong>
                   {entry.schoolName} ({entry.country}, {entry.educationLevel})
                 </strong>
-                <button>Change</button>
+                <button type="button" onClick={() => onEdit(entry.id)}>
+                  Change
+                </button>
                 <button>Delete</button>
               </div>
               <div style={{}}>
