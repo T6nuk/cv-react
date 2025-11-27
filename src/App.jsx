@@ -43,6 +43,11 @@ function App() {
     setId(id);
   }
 
+  function handleDeleteEducation(id) {
+    setEducation((prev) => prev.filter((entry) => entry.id !== id));
+    console.log(id);
+  }
+
   function generateId() {
     return crypto.randomUUID();
   }
@@ -84,6 +89,7 @@ function App() {
           entries={education}
           onAdd={handleAddEducation}
           onEdit={handleEditEducation}
+          onDelete={handleDeleteEducation}
         ></EducationSection>
         {isModalOpen && (
           <Modal open={isModalOpen} onClose={() => setOpen(false)}>

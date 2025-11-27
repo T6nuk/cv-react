@@ -31,7 +31,9 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
                 <button type="button" onClick={() => onEdit(entry.id)}>
                   Change
                 </button>
-                <button>Delete</button>
+                <button type="button" onClick={() => onDelete(entry.id)}>
+                  Delete
+                </button>
               </div>
               <div style={{}}>
                 <div>{entry.subject}</div>
