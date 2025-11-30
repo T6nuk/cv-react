@@ -1,11 +1,15 @@
-export default function EducationForm({ onSubmit, initialValues, mode }) {
+import Dropdown from "./DropdownComponent";
+
+export default function EducationForm({ onSubmit, initialValues }) {
   return (
     <div>
+      <Dropdown></Dropdown>
       <form method="post" onSubmit={onSubmit}>
         <div>
           <div>
             <div>
               <label>Level of education</label>
+
               <div>
                 <select
                   name="educationLevel"
@@ -32,7 +36,7 @@ export default function EducationForm({ onSubmit, initialValues, mode }) {
         </div>
 
         <br></br>
-        <button type="submit">Submit</button>
+        <button type="submit">Save changes</button>
       </form>
     </div>
   );

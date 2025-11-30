@@ -45,7 +45,6 @@ function App() {
 
   function handleDeleteEducation(id) {
     setEducation((prev) => prev.filter((entry) => entry.id !== id));
-    console.log(id);
   }
 
   function generateId() {
@@ -58,8 +57,6 @@ function App() {
   } else {
     initialValues = emptyEducation;
   }
-
-  console.log(initialValues);
 
   function handleSubmitEducation(e) {
     console.log(modalMode);
@@ -79,7 +76,14 @@ function App() {
       setEducation((prev) => [...prev, newEducation]);
     }
 
-    console.log("selected" + selectedId);
+    if (modalMode === "edit") {
+      //do something
+      setEducation((prev) =>
+        prev.map((entry) =>
+          entry.id === selectedId ? { ...entry, ...formJson } : entry
+        )
+      );
+    }
   }
 
   return (
