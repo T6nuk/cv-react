@@ -43,6 +43,8 @@
 
 .dropdown {
   position: relative;
+  display: flex;
+  text-align: right;
 }
 
 .menu {
@@ -51,4 +53,15 @@
   padding: 0;
   position: absolute;
   background-color: white;
+}
+
+.edu-level {
+  border: 1px solid red;
+  width: 200px;
+  height: 20px;
+}
+
+svg {
+  transform: rotate(0deg);
+  width: 20px;
 }

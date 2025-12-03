@@ -29,7 +29,8 @@ function App() {
     educationLevel: "",
     schoolName: "",
     subject: "",
-    years: "",
+    yearStarting: "",
+    yearEnding: "",
   };
 
   function handleAddEducation() {
