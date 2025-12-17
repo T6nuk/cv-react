@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import EducationForm from "./EducationForm";
 
 export default function Modal({ open, onClose, children }) {
   return (

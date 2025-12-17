@@ -68,6 +68,8 @@ function App() {
     const formData = new FormData(form);
     const id = generateId();
     const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+
     let newEducation = {
       ...formJson,
       id,

@@ -1,6 +1,15 @@
 import Dropdown from "./DropdownComponent";
 
 export default function EducationForm({ onSubmit, initialValues }) {
+  const eduLevels = [
+    "Elementary school",
+    "Middle school",
+    "High school",
+    "Vocational school",
+    "Bachelor",
+    "Master",
+    "Doctorate",
+  ];
   return (
     <div>
       <form method="post" onSubmit={onSubmit}>
@@ -9,15 +18,11 @@ export default function EducationForm({ onSubmit, initialValues }) {
             <div>
               <label>Level of education</label>
               <div>
-                {/* <select
-                  name="educationLevel"
-                  defaultValue={initialValues.educationLevel}
-                >
-                  <option value="middleSchool">Middle school</option>
-                  <option value="highSchool">Highschool</option>
-                  <option value="bachelors">Bacherlors degree</option>
-                </select> */}
-                <Dropdown></Dropdown>
+                <Dropdown
+                  name="eductionLevel"
+                  options={eduLevels}
+                  value={initialValues.educationLevel}
+                ></Dropdown>
               </div>
             </div>
             <div>

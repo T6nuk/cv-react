@@ -1,24 +1,15 @@
 import { useState } from "react";
 import "../App.css";
 
-export default function Dropdown() {
+export default function Dropdown({ options, value }) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(value);
 
-  const eduLevels = [
-    "Elementary school",
-    "Middle school",
-    "High school",
-    "Vocational school",
-    "Bachelor",
-    "Master",
-    "Doctorate",
-  ];
   return (
     <div className="dropdown">
       <div className="edu-level" onClick={() => setOpen(!open)}>
         <div>
-          <input type="hidden" />
+          <input type="hidden" name="educationLevel" value={selected} />
           <span className="edu-level-placeholder">{selected}</span>
           <span>
             <svg
@@ -33,10 +24,9 @@ export default function Dropdown() {
               ></path>
             </svg>
           </span>
-          {/* <button type="button">""</button> */}
           {open ? (
             <ul className="menu">
-              {eduLevels.map((item, i) => (
+              {options.map((item, i) => (
                 <div onClick={() => setSelected(item)}>
                   <li className="menuItem" key={i}>
                     {item}
