@@ -101,6 +101,7 @@ function App() {
         {isModalOpen && (
           <Modal open={isModalOpen} onClose={() => setOpen(false)}>
             <EducationForm
+              onClose={() => setOpen(false)}
               onSubmit={handleSubmitEducation}
               initialValues={initialValues}
             ></EducationForm>

@@ -1,16 +1,22 @@
 import { useState } from "react";
 import "../App.css";
 
-export default function Dropdown({ options, value }) {
+export default function Dropdown({ options, value, name }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(value);
 
   return (
     <div className="dropdown">
-      <div className="edu-level" onClick={() => setOpen(!open)}>
-        <div>
-          <input type="hidden" name="educationLevel" value={selected} />
-          <span className="edu-level-placeholder">{selected}</span>
+      <div className="dropdown-list" onClick={() => setOpen(!open)}>
+        <div
+          style={{
+            height: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <input type="hidden" name={name} value={selected} />
+          <span>{selected}</span>
           <span>
             <svg
               fill="none"
@@ -25,7 +31,7 @@ export default function Dropdown({ options, value }) {
             </svg>
           </span>
           {open ? (
-            <ul className="menu">
+            <ul className="menu year-dropdown">
               {options.map((item, i) => (
                 <div onClick={() => setSelected(item)}>
                   <li className="menuItem" key={i}>
