@@ -12,12 +12,14 @@ export default function Dropdown({ options, value, name }) {
           style={{
             height: "100%",
             display: "flex",
+            alignItems: "center",
             justifyContent: "space-between",
+            gap: "1rem",
           }}
         >
           <input type="hidden" name={name} value={selected} />
-          <span>{selected}</span>
-          <span>
+          <span className="dd-span-selected">{selected}</span>
+          <span className="dropdown-svg">
             <svg
               fill="none"
               viewBox="0 0 24 24"

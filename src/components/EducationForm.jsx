@@ -28,7 +28,6 @@ export default function EducationForm({ onSubmit, initialValues, onClose }) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="none"
-            class="w-6 h-6 dismiss"
             onClick={() => onClose(true)}
           >
             <path
@@ -68,6 +67,7 @@ export default function EducationForm({ onSubmit, initialValues, onClose }) {
                     type="text"
                     name="schoolName"
                     defaultValue={initialValues.schoolName}
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -78,6 +78,7 @@ export default function EducationForm({ onSubmit, initialValues, onClose }) {
                     type="text"
                     name="subject"
                     defaultValue={initialValues.subject}
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -114,6 +115,7 @@ export default function EducationForm({ onSubmit, initialValues, onClose }) {
                     type="text"
                     name="country"
                     defaultValue={initialValues.country}
+                    autoComplete="off"
                   />
                 </div>
               </div>
