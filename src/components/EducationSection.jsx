@@ -19,12 +19,27 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
     <div
       style={{
         backgroundColor: "white",
+        textAlign: "left",
       }}
     >
-      <div>
+      <div
+        style={{
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
+          paddingLeft: "1.75rem",
+          borderBottom: "1px solid #d0ceceff",
+        }}
+      >
         <header>Education</header>
       </div>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.5rem",
+          padding: "1.75rem",
+        }}
+      >
         {eduArr.map((entry) => (
           <article key={entry.id}>
             <div>
@@ -62,8 +77,23 @@ export default function EducationSection({ entries, onAdd, onEdit, onDelete }) {
           </article>
         ))}
       </div>
-      <div>
-        <button type="button" onClick={onAdd}>
+      <div
+        style={{
+          paddingLeft: "1.5rem",
+          paddingBottom: "1rem",
+        }}
+      >
+        <button
+          type="button"
+          onClick={onAdd}
+          style={{
+            borderRadius: "9999px",
+            backgroundColor: "white",
+            borderColor: "rgb(214 222 230)",
+            height: "fit-content",
+            lineHeight: "0.5rem",
+          }}
+        >
           + Add new education
         </button>
       </div>
